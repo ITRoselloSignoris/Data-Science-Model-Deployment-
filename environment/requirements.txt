@@ -1,0 +1,12 @@
+pandas
+pickle
+sklearn
+funpymodeling
+fastapi
+uvicorn
+pydantic
+requests
+seaborn
+yellowbrick
+numpy
+matplotlib
