@@ -1,6 +1,4 @@
 # Model Deployment with FastAPI
-Project made for Data Science & MLOPS Bootcamp from Edvai
-
 ## Project description
 In this project I built a Random Forest Classification model that predicts wether the water is potable or not based on the next 9 variables:
 - **ph**
@@ -32,7 +30,7 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 
 ## Installation
 1. Clone the repository:  
-`gh repo clone https://github.com/ITRoselloSignoris/Data-Science-Model-Deployment-`
+`git clone https://github.com/ITRoselloSignoris/Data-Science-Model-Deployment-`
 
 2. Install the necessary libraries inside the requirements.txt:  
 `pip install -r requirements.txt`
@@ -46,10 +44,19 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 
 ## Results
 ### Confusion Matrix
+![plot](results/ConfusionMatrix.png)
+As you can see, the model has a 100% accuracy, so we can deduce that the model does not do a generalization of the data, instead it learns the expected output for the values given.  
+This tells us that this model is **overfitting**, so we need to tune it.
 
+#### Discrimination Threshold
+![plot](results/DiscriminationThreshold.png)
+Here we can see how metrics like precision, recall and f1 change with different threshold values.
 ### ROC curve
-
+![plot](results/ROCcurve.png)
+As we saw in the ***confusion matrix***, in the ***ROC curve*** we can see that the model learned perfectly the training data.  
+It was supposed to find a pattern in the data, however it did not find it, so that is why the model performs significantly worse for the testing data.
 ## To-Do list
-- [ ] Make and save model's validation error plots
-- [ ] Add ROC curve and Confusion Matrix plots in the README.md file
+- [X] Make and save model's validation error plots.
+- [X] Add ROC curve and Confusion Matrix plots in the README.md file.
 - [ ] Add information about the process of the doing the model (data preparation, model chosen, parameters, etc)
+- [X] Save discretized bins, and use it in the **predict_water_potability** function inside the API.
