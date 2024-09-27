@@ -51,7 +51,7 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 
 ## Results
 ### Confusion Matrix
-![plot](results/ConfusionMatrix.png)
+![plot](results/ConfusionMatrix.png)  
 As you can see, the model has a 100% accuracy, so we can deduce that the model does not do a generalization of the data, instead it learns the expected output for the values given.  
 This tells us that this model is **overfitting**, so we need to tune it.
 
@@ -59,7 +59,7 @@ This tells us that this model is **overfitting**, so we need to tune it.
 ![plot](results/DiscriminationThreshold.png)
 Here we can see how metrics like precision, recall and f1 change with different threshold values.
 ### ROC curve
-![plot](results/ROCcurve.png)
+![plot](results/ROCcurve.png)  
 As we saw in the ***confusion matrix***, in the ***ROC curve*** we can see that the model learned perfectly the training data.  
 It was supposed to find a pattern in the data, however it did not find it, so that is why the model performs significantly worse for the testing data.
 ## To-Do list
