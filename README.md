@@ -29,6 +29,14 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 - <ins>**Others**</ins>: numpy and pickles.
 
 ## Installation
+### Docker
+1. Create image:
+`docker build -t proyecto_bootcamp_edvai_jueves .`
+
+2. Create container:
+`docker run -p 5000:8000 -e ID_USER=Iñaki proyecto_bootcamp_edvai_jueves` 
+
+### Without Docker 
 1. Clone the repository:  
 `git clone https://github.com/ITRoselloSignoris/Data-Science-Model-Deployment-`
 
@@ -41,14 +49,13 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 4. Run the "call_api.py" file to call the api:   
 `python call_api.py` 
 
-
 ## Results
 ### Confusion Matrix
 ![plot](results/ConfusionMatrix.png)
 As you can see, the model has a 100% accuracy, so we can deduce that the model does not do a generalization of the data, instead it learns the expected output for the values given.  
 This tells us that this model is **overfitting**, so we need to tune it.
 
-#### Discrimination Threshold
+### Discrimination Threshold
 ![plot](results/DiscriminationThreshold.png)
 Here we can see how metrics like precision, recall and f1 change with different threshold values.
 ### ROC curve
