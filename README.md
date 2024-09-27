@@ -30,10 +30,10 @@ This model is deployed with FastAPI on a local server and it uses Uvicorn to all
 
 ## Installation
 ### Docker
-1. Create image:
+1. Create image:  
 `docker build -t proyecto_bootcamp_edvai_jueves .`
 
-2. Create container:
+2. Create container:  
 `docker run -p 5000:8000 -e ID_USER=Iñaki proyecto_bootcamp_edvai_jueves` 
 
 ### Without Docker 
