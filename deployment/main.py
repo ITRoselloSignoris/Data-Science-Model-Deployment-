@@ -6,26 +6,30 @@ from fastapi.encoders import jsonable_encoder
 import uvicorn
 from pydantic import BaseModel
 
+import os
+PARENT_FOLDER =  os.path.dirname(__file__)
+MODEL_PATH = os.path.join(PARENT_FOLDER, "../src/model/rf.pkl")
+COLUMNS_PATH = os.path.join(PARENT_FOLDER, "../src/categorias_ohe.pkl")
+BINS1_PATH = os.path.join(PARENT_FOLDER, "../src/saved_bins/ph_bins.pkl")
+BINS2_PATH = os.path.join(PARENT_FOLDER, "../src/saved_bins/Trihalomethanes_bins.pkl")
+BINS3_PATH = os.path.join(PARENT_FOLDER, "../src/saved_bins/Sulfate_bins.pkl")
+
+ID_USER = os.getenv("ID_USER","Desconocida/o")
 
 app = FastAPI()
 
-COLUMNS_PATH = "../src/categorias_ohe.pkl"
 with open(COLUMNS_PATH, 'rb') as handle:
     ohe_tr = pickle.load(handle)
 
-BINS1_PATH = "../src/saved_bins/ph_bins.pkl"
 with open(BINS1_PATH, 'rb') as handle:
     ph_bins = pickle.load(handle)
 
-BINS2_PATH = "../src/saved_bins/Trihalomethanes_bins.pkl"
 with open(BINS2_PATH, 'rb') as handle:
     Trihalomethanes_bins = pickle.load(handle)
 
-BINS3_PATH = "../src/saved_bins/Sulfate_bins.pkl"
 with open(BINS3_PATH, 'rb') as handle:
     Sulfate_bins = pickle.load(handle)
 
-MODEL_PATH = "../src/model/rf.pkl"
 model = pickle.load(open(MODEL_PATH, 'rb'))
 
 class Answer(BaseModel):
@@ -41,7 +45,7 @@ class Answer(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message":"Model Deployment Bootcamp"}
+    return {"message": "Usuario/a" + ID_USER}
 
 @app.post("/prediction")
 def predict_water_potability(answer:Answer):
